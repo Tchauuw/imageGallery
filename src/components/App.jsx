@@ -12,15 +12,14 @@ const App = () => {
 
     return<BrowserRouter>
         <Layout>
-            <Home />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/gallery" element={ <Gallery /> } />
+                <Route path="/login" element={ <Login />} />
+                <Route path="/logout" element={ <Logout />} />
+                <Route path="/upload" element={ <Upload />} />
+            </Routes>
         </Layout>
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/gallery" element={ <Gallery /> } />
-            <Route path="/login" element={ <Login />} />
-            <Route path="/logout" element={ <Logout />} />
-            <Route path="/upload" element={ <Upload />} />
-        </Routes>
     </BrowserRouter>
 }
 

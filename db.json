@@ -4,6 +4,11 @@
       "id": "0",
       "username": "test@mail.com",
       "password": "azerty"
+    },
+    {
+      "id" : "1",
+      "username" : "mimie@mathy.com",
+      "password" : "test"
     }
   ],
   "images": [

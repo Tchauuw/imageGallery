@@ -8,7 +8,10 @@ const Login = () => {
       <div className="flex content-center items-center justify-center h-full">
         <div className="w-full lg:w-4/12 px-4">
           {/* Mettez l'alerte ici ! */}
-          <LoginForm />
+          <LoginForm 
+            onSubmit={credentials => console.log(credentials)}   
+            disabled={false}
+          />
         </div>
       </div>
     </div>

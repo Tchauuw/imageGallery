@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
+import { AuthContext } from '../components/App';
+import { Navigate } from 'react-router-dom';
 
 const UploadForm = () => {
 
+    const [state] = useContext(AuthContext);
+
     return <div className="container mx-auto px-4 h-full">
+
+    {state.user === null && (
+        <Navigate to={{pathname: "/login" }} state={{ from:"/upload" }} />
+    )}
         <div className="flex content-center items-center justify-center h-full">
             <div className="w-full lg:w-4/12 px-4">
                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
@@ -49,7 +57,7 @@ const UploadForm = () => {
                                 <textarea
                                     id="description"
                                     className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                    name="description" id="description" cols="30" rows="5"
+                                    name="description" cols="30" rows="5"
                                 >
                                 </textarea>
                             </div>

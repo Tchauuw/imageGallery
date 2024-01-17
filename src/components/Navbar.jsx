@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./App";
 
 const Navbar = () => {
 	const [navbarOpen, setnavbarOpen] = useState(false);
+	const [state] = useContext(AuthContext);
 
 	const handleClick = () => {
 		setnavbarOpen(!navbarOpen);
@@ -59,12 +61,14 @@ const Navbar = () => {
 							>
 								Accueil
 							</Link>
-							<Link
-								to="/gallery"
-								className="text-gray-800 hover:text-gray-600 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-							>
-								Galerie
-							</Link>
+							{ state.user !== null &&(
+								<Link
+									to="/gallery"
+									className="text-gray-800 hover:text-gray-600 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+								>
+									Galerie
+								</Link>
+							)}
 							<Link
 								to="/upload"
 								className="text-gray-800 hover:text-gray-600 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
@@ -73,12 +77,21 @@ const Navbar = () => {
 							</Link>
 						</ul>
 						<ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-							<Link
-								to="/login"
-								className="bg-pink-500 text-white active:bg-pink-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
-							>
+							{ state.user === null ? (
+								<Link 
+									to="/login"
+									className="bg-pink-500 text-white active:bg-pink-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+								>
 								Connexion
-							</Link>
+								</Link>
+							) : (
+								<Link
+									to="/logout"
+									className="bg-pink-500 text-white active:bg-pink-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+								>
+								Déconnexion
+								</Link>
+							)}
 						</ul>
 					</div>
 				</div>
